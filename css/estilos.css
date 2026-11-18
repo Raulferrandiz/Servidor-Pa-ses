@@ -1,0 +1,179 @@
+:root {
+  --fondo: #f4f6fa;
+  --panel: #ffffff;
+  --texto: #1c2434;
+  --texto-suave: #5c6678;
+  --borde: #dfe3ea;
+  --primario: #e8600c;
+  --primario-oscuro: #c24f08;
+  --azul: #1c2b4a;
+  --error-fondo: #fdecec;
+  --error-texto: #a52222;
+  --info-fondo: #eaf1fd;
+  --info-texto: #1d4c9a;
+  --radio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.cabecera {
+  background: var(--azul);
+  color: #fff;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+.cabecera h1 { margin: 0; font-size: 1.6rem; }
+.cabecera p { margin: .25rem 0 0; opacity: .8; font-size: .9rem; }
+.cabecera a { color: #ffb37e; }
+
+.contenido {
+  max-width: 1000px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 800px) {
+  .contenido { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.25rem;
+}
+.panel h2 { margin: 0 0 1rem; font-size: 1.2rem; }
+.panel-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.panel-cabecera h2 { margin: 0; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: .55rem 1rem;
+  background: var(--primario);
+  color: #fff;
+  font-weight: 600;
+}
+button:hover:not(:disabled) { background: var(--primario-oscuro); }
+button:disabled { opacity: .55; cursor: not-allowed; }
+
+.btn-secundario {
+  background: transparent;
+  color: var(--azul);
+  border: 1px solid var(--azul);
+}
+.btn-secundario:hover:not(:disabled) { background: var(--azul); color: #fff; }
+
+.btn-quitar {
+  background: transparent;
+  color: var(--error-texto);
+  border: 1px solid currentColor;
+  padding: .3rem .7rem;
+  font-size: .85rem;
+}
+.btn-quitar:hover:not(:disabled) { background: var(--error-texto); color: #fff; }
+
+.form-busqueda { display: flex; gap: .5rem; }
+.form-busqueda input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  padding: .55rem .75rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+}
+.form-busqueda input:focus { outline: 2px solid var(--primario); outline-offset: 1px; }
+
+.resultado { margin-top: 1rem; }
+
+.tarjeta {
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+.tarjeta-bandera {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: var(--fondo);
+  border-bottom: 1px solid var(--borde);
+}
+.tarjeta-cuerpo { padding: 1rem; }
+.tarjeta-cuerpo h3 { margin: 0 0 .5rem; font-size: 1.3rem; }
+.tarjeta-datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .25rem .75rem;
+  margin: 0 0 1rem;
+}
+.tarjeta-datos dt { color: var(--texto-suave); }
+.tarjeta-datos dd { margin: 0; font-weight: 500; }
+
+.aviso {
+  margin: 0;
+  padding: .75rem 1rem;
+  border-radius: 6px;
+}
+.aviso--error { background: var(--error-fondo); color: var(--error-texto); }
+.aviso--info { background: var(--info-fondo); color: var(--info-texto); }
+
+.lista-favoritos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.lista-favoritos:empty::before {
+  content: "Todavía no hay favoritos. Busca un país y pulsa «Añadir a favoritos».";
+  display: block;
+  color: var(--texto-suave);
+  font-style: italic;
+}
+
+.favorito {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .5rem .75rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  animation: aparecer .25s ease;
+}
+.favorito-bandera {
+  width: 40px;
+  height: 27px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid var(--borde);
+  flex-shrink: 0;
+}
+.favorito-texto { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.favorito-nombre { font-weight: 600; overflow-wrap: anywhere; }
+.favorito-poblacion { font-size: .85rem; color: var(--texto-suave); }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}

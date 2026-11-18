@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de países</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Buscador de países</h1>
+    <p>Datos de <a href="https://countries.dev" target="_blank" rel="noopener">countries.dev</a></p>
+  </header>
+
+  <main class="contenido">
+    <section class="panel" aria-labelledby="titulo-busqueda">
+      <h2 id="titulo-busqueda">Buscar</h2>
+      <form id="form-busqueda" class="form-busqueda">
+        <input type="text" id="input-pais" placeholder="Nombre del país (en inglés)"
+               autocomplete="off" required>
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div id="resultado-busqueda" class="resultado" aria-live="polite"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="titulo-favoritos">
+      <div class="panel-cabecera">
+        <h2 id="titulo-favoritos">Favoritos</h2>
+        <button type="button" id="btn-ordenar" class="btn-secundario">Ordenar por población</button>
+      </div>
+
+      <ul id="lista-favoritos" class="lista-favoritos"></ul>
+    </section>
+  </main>
+</body>
+</html>
